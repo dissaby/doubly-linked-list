@@ -9,6 +9,10 @@ class LinkedList {
     }
 
     append(data) {
+        if (this.length = 0) {
+            this.head = data;
+            this.tail = data;
+        }
     }
 
     head() {
