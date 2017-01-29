@@ -23,28 +23,47 @@ class LinkedList {
     }
 
     head() {
-        if (this.length != null) {
+        if (this.length == 0) {
+            return null;
+        } else {
             return this._head.data;
         }
     }
 
     tail() {
-        if (this._tail != null) {
+        if (this._tail == null) {
+            return null;
+        } else {
             return this._tail.data;
         }
     }
 
     at(index) {
+        var currentNode = this.searchByIndex(index);
+        return currentNode.data;
     }
 
     insertAt(index, data) {
+
     }
 
     isEmpty() {
+        if (this._head == null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     clear() {
+        if (this._head != null) {
+            this._head = null;
+            this._tail = null;
+            this.length = 0;
+        }
+        return this;
     }
+
 
     deleteAt(index) {
     }
@@ -53,6 +72,17 @@ class LinkedList {
     }
 
     indexOf(data) {
+    }
+
+    searchByIndex(index) {
+        var i = 0;
+        var currentNode = this._head;
+
+        while (index != i) {
+            currentNode = currentNode.next;
+            i++
+        }
+        return currentNode;
     }
 }
 
