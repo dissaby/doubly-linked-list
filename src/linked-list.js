@@ -39,12 +39,12 @@ class LinkedList {
     }
 
     at(index) {
-        var currentNode = this.searchByIndex(index);
+        var currentNode = this.searchBy(index);
         return currentNode.data;
     }
 
     insertAt(index, data) {
-        var currentNode = this.searchByIndex(index);
+        var currentNode = this.searchBy(index);
         var node = new Node(data);
 
         if (currentNode == null) {
@@ -76,6 +76,22 @@ class LinkedList {
 
 
     deleteAt(index) {
+        var currentNode = this.searchBy(index);
+
+        if (currentNode == this._head) {
+            if (currentNode.next != null) {
+                currentNode.next.prev = null;
+                this._head = currentNode.next;
+            } else {
+                this._tail = null;
+            }
+        } else if (currentNode == this._tail) {
+            currentNode.prev.next = currentNode.next;
+            this._tail = currentNode.prev;
+        } else {
+            currentNode.prev.next = currentNode.next;
+            currentNode.next.prev = currentNode.prev;
+        }
     }
 
     reverse() {
@@ -84,10 +100,9 @@ class LinkedList {
     indexOf(data) {
     }
 
-    searchByIndex(index) {
+    searchBy(index) {
         var i = 0;
         var currentNode = this._head;
-
         while (index != i) {
             currentNode = currentNode.next;
             i++
