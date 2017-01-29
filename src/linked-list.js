@@ -95,9 +95,30 @@ class LinkedList {
     }
 
     reverse() {
+        var currentNode = this._tail;
+        while (currentNode != null) {
+            var temp = currentNode.prev;
+            currentNode.prev = currentNode.next;
+            currentNode.next = temp;
+            currentNode = temp;
+        }
+        var temp = this._head;
+        this._head = this._tail;
+        this._tail = temp;
+        return this;
     }
 
     indexOf(data) {
+        var i = 0;
+        var curentNode = this._head;
+        while (curentNode != null) {
+            if (curentNode.data === data) {
+                return i
+            }
+            curentNode = curentNode.next;
+            i++;
+        }
+        return -1;
     }
 
     searchBy(index) {
