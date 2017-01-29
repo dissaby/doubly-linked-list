@@ -44,7 +44,17 @@ class LinkedList {
     }
 
     insertAt(index, data) {
+        var currentNode = this.searchByIndex(index);
+        var node = new Node(data);
 
+        if (currentNode == null) {
+            this.append(data);
+        } else {
+            node.prev = currentNode;
+            node.next = currentNode;
+            currentNode.prev.next = node;
+            currentNode.prev = node;
+        }
     }
 
     isEmpty() {
