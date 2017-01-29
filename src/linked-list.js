@@ -113,7 +113,7 @@ class LinkedList {
         var curentNode = this._head;
         while (curentNode != null) {
             if (curentNode.data === data) {
-                return i
+                return i;
             }
             curentNode = curentNode.next;
             i++;
@@ -126,7 +126,7 @@ class LinkedList {
         var currentNode = this._head;
         while (index != i) {
             currentNode = currentNode.next;
-            i++
+            i++;
         }
         return currentNode;
     }
